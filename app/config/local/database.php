@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'sklaravel',
+			'database'  => 'eashl',
 			'username'  => 'root',
 			'password'  => 'rullstol',
 			'charset'   => 'utf8',

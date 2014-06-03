@@ -5,21 +5,33 @@
 
 
 <h1>My Players</h1>
-<div class="packs">
+
+
+	<table class="table table-striped">
+
+	<tr>
+		<th>Player</th>
+		<th>Center</th>
+		<th>Left wing</th>
+		<th>Right wing</th>
+		<th>Defender</th>
+		<th>Goalie</th>
+		<th></th>
+	</tr>
 	@foreach($myCards as $card)
 
-				<div class="col-md-3">
-		    		<div class="text-center">
+				<tr>
+					<td>{{$card->player->alias}}</td>
+					<td>{{$card->C}}</td>
+					<td>{{$card->L}}</td>
+					<td>{{$card->R}}</td>
+					<td>{{$card->D}}</td>
+					<td>{{$card->G}}</td>
+					<td><div class="text-success"><b>{{Card::rollCompare($card->id)}}</b></div></td>
+				</tr>
 						
-						<h3>{{$card->player->alias}}</h3>
-						<p><b>Center: </b> {{$card->C}}</p>
-						<p><b>Left Wing: </b> {{$card->L}}</p>
-						<p><b>Right Wing: </b> {{$card->R}}</p>
-						<p><b>Defender: </b> {{$card->D}}</p>
-						<p><b>Goalie: </b> {{$card->G}}</p>
-						<br>
-					</div>
-				</div>
+						
 	@endforeach
-	</div>
+	</table>
+	
 @stop

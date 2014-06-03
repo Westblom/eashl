@@ -22,5 +22,21 @@ class Card extends \Eloquent {
 			$card->new = 1;
 		$card->save();
 	}
+
+	public static function rollCompare($id){
+
+		$card = Card::find($id);
+		$compare['C'] = ($card->C - $card->player->C);
+		$compare['L'] = ($card->L - $card->player->L);
+		$compare['R'] = ($card->R - $card->player->R);
+		$compare['D'] = ($card->D - $card->player->D);
+		$compare['G'] = ($card->G - $card->player->G);
+		$total = 0;
+		foreach($compare as $key => $value) {
+			$total = $total + $value;
+
+		}
+		return "+" . $total;
+	}
 }
 
