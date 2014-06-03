@@ -1,0 +1,27 @@
+body {
+	padding-top:80px;
+}
+
+.input {
+	margin-bottom:5px;
+}
+
+﻿.packs{
+    padding: 20px 0;
+	text-align: center;
+}
+.packs > div > div{
+	margin-bottom:15px;
+	padding: 10px;
+	border: 1px solid #0d747c;
+	border-radius: 4px;
+	transition: 0.2s;
+}
+.packs > div:hover > div{
+	margin-top: -10px;
+	margin-bottom: 25px;
+	border: 1px solid rgb(200, 200, 200);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+	background: rgba(200, 200, 200, 0.1);
+	transition: 0.5s;
+}
