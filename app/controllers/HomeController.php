@@ -20,33 +20,6 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function showStore() {
-
-		$packs = Pack::all();
-		return View::make('store',compact('packs'));
-	}
-
-	public function buyPack($id) {
-
-		$pack = Pack::find($id);
-
-		if(Auth::user()->coins < $pack->price){
-			return "NOT ENOUGH COINS";
-		}
-
-		$i = 0;
-		while($i < $pack->cards){
-			Card::randNormal();
-			$i++;
-		}
 
 
-		$newCards = Card::where('user_id', '=', Auth::id())->where('new', '=', 1)->get();
-		foreach($newCards as $card){
-			$card->new = 0;
-			$card->save();
-		}
-		return View::make('store.newpack', compact('newCards', 'pack'));
-
-	}
 }

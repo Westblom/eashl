@@ -93,4 +93,16 @@ class DashboardController extends BaseController{
 		}
 		return Redirect::route('dashboard.team');
 	}
+
+	public function newCards() {
+
+
+		$newCards = Card::where('user_id', '=', Auth::id())->where('new', '=', 1)->get();
+		foreach($newCards as $card){
+			$card->new = 0;
+			$card->save();
+		}
+
+		return View::make('dashboard.newcards', compact('newCards'));
+	}
 }

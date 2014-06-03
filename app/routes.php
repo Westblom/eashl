@@ -13,8 +13,10 @@
 
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showWelcome']);
-Route::get('/store', ['as' => 'store', 'uses' => 'HomeController@showStore']);
-Route::get('/store/{id}', ['as' => 'store.buy', 'uses' => 'HomeController@buyPack']);
+
+
+Route::get('/store', ['as' => 'store', 'uses' => 'StoreController@showStore']);
+Route::get('/store/{id}', ['as' => 'store.buy', 'uses' => 'StoreController@buyPack']);
 
 
 Route::get('/login', ['before' => 'guest', 'as' => 'login', 'uses' => 'UserController@showLogin']);
@@ -26,6 +28,7 @@ Route::get('/signup', ['before' => 'guest', 'as' => 'signup', 'uses' => 'UserCon
 Route::post('/signup', ['before' => 'csrf', 'as' => 'signup.post', 'uses' => 'UserController@postSignup']);
 
 Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@showDashboard']);
+Route::get('/dashboard/newcards', ['as' => 'dashboard.newcards', 'uses' => 'DashboardController@newCards']);
 Route::get('/dashboard/team', ['as' => 'dashboard.team', 'uses' => 'DashboardController@showTeam']);
 Route::get('/dashboard/team/equip/{slot}/{card}', ['as' => 'dashboard.team.equip', 'uses' => 'DashboardController@postEquip']);
 

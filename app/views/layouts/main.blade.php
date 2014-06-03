@@ -52,7 +52,12 @@
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
             <li><a href="{{URL::route('dashboard.team')}}"><i class="fa fa-group"></i> Team</a></li>
-            <li><a href="#"><i class="fa fa-database"></i> {{ Auth::user()->coins }}</a></li>
+            <li><a href="#"><i class="fa fa-database"></i> 
+                @if(isset($user))
+                  {{ $user->coins }}
+                @else
+                  {{ Auth::user()->coins }}
+                @endif</a></li>
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
