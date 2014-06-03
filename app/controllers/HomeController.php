@@ -34,7 +34,12 @@ class HomeController extends BaseController {
 			return "NOT ENOUGH COINS";
 		}
 
-		Card::randNormal();
+		$i = 0;
+		while($i < $pack->cards){
+			Card::randNormal();
+			$i++;
+		}
+
 
 		$newCards = Card::where('user_id', '=', Auth::id())->where('new', '=', 1)->get();
 		foreach($newCards as $card){

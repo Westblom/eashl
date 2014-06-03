@@ -25,3 +25,12 @@ body {
 	background: rgba(200, 200, 200, 0.1);
 	transition: 0.5s;
 }
+
+.formation {
+	margin-bottom: 30px;
+}
+
+.formation-player {
+	padding: 10px 5px;
+	
+}
