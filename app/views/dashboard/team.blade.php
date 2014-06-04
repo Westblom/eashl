@@ -145,7 +145,7 @@
 			<th>Player</th>
 			<th>Left wing score</th>
 			<th></th>
-		@foreach($LWs as $LW)
+		@foreach($benchPlayers as $LW)
 				<tr>
 					<td>{{$LW->player->alias}}</td>
 					<td>{{$LW->L}}</td>
@@ -176,7 +176,7 @@
 			<th>Player</th>
 			<th>Right wing score</th>
 			<th></th>
-		@foreach($RWs as $RW)
+		@foreach($benchPlayers as $RW)
 				<tr>
 					<td>{{$RW->player->alias}}</td>
 					<td>{{$RW->R}}</td>
@@ -207,7 +207,7 @@
 			<th>Player</th>
 			<th>Left wing score</th>
 			<th></th>
-		@foreach($Cs as $C)
+		@foreach($benchPlayers as $C)
 				<tr>
 					<td>{{$C->player->alias}}</td>
 					<td>{{$C->C}}</td>
@@ -238,7 +238,7 @@
 			<th>Player</th>
 			<th>Left wing score</th>
 			<th></th>
-		@foreach($LDs as $LD)
+		@foreach($benchPlayers as $LD)
 				<tr>
 					<td>{{$LD->player->alias}}</td>
 					<td>{{$LD->D}}</td>
@@ -269,7 +269,7 @@
 			<th>Player</th>
 			<th>Left wing score</th>
 			<th></th>
-		@foreach($RDs as $RD)
+		@foreach($benchPlayers as $RD)
 				<tr>
 					<td>{{$RD->player->alias}}</td>
 					<td>{{$RD->D}}</td>
@@ -301,7 +301,7 @@
 			<th>Player</th>
 			<th>Goaltender score</th>
 			<th></th>
-		@foreach($Gs as $G)
+		@foreach($benchPlayers as $G)
 				<tr>
 					<td>{{$G->player->alias}}</td>
 					<td>{{$G->G}}</td>

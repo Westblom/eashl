@@ -4,9 +4,9 @@
 
 
 
-	<div class="packs">
-	@foreach($newCards as $card)
-		{{Card::display($card->id)}}
-	@endforeach
-	</div>
+<div class="packs">
+@foreach($newCards as $card)
+{{Card::display($card->id)}}
+@endforeach
+</div>
 @stop

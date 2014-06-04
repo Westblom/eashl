@@ -13,67 +13,87 @@ class DashboardController extends BaseController{
 
 		$myCards = Card::where('user_id', '=', Auth::id())->get();
 		
-		$LWs = Card::where('user_id', '=', Auth::id())
+		$benchPlayers = Card::where('user_id', '=', Auth::id())
 					->where('slot', '=', 0)
-		 			->orderBy('L', 'DESC')
 		 			->get();
 		
-		$Cs = Card::where('user_id', '=', Auth::id())
-					->where('slot', '=', 0)
-		 			->orderBy('C', 'DESC')
-		 			->get();
-		
-		$RWs = Card::where('user_id', '=', Auth::id())
-					->where('slot', '=', 0)
-		 			->orderBy('R', 'DESC')
-		 			->get();
-		
-		$LDs = Card::where('user_id', '=', Auth::id())
-					->where('slot', '=', 0)
-		 			->orderBy('D', 'DESC')
-		 			->get();
-		
-		$RDs = Card::where('user_id', '=', Auth::id())
-					->where('slot', '=', 0)
-		 			->orderBy('D', 'DESC')
-		 			->get();
-		
-		$Gs = Card::where('user_id', '=', Auth::id())
-					->where('slot', '=', 0)
-		 			->orderBy('G', 'DESC')
-		 			->get();
 
-
-
+		//CHECK IF LEFT WING IS EQUIPPED
 		$leftwing = Card::where('user_id', '=', Auth::id())
 						->where('slot', '=', 'LW')
+						->count();
+		if($leftwing){
+						$leftwing = Card::where('user_id', '=', Auth::id())
+						->where('slot', '=', 'LW')
 						->firstOrFail();
+		} else {
+			unset($leftwing);
+		}
 		
+		//CHECK IF CENTER IS EQUIPPED
 		$center = Card::where('user_id', '=', Auth::id())
 						->where('slot', '=', 'C')
+						->count();
+		if($center){
+						$center = Card::where('user_id', '=', Auth::id())
+						->where('slot', '=', 'C')
 						->firstOrFail();
+		} else {
+			unset($center);
+		}
 		
+		//CHECK IF RIGHT WING IS EQUIPPED
 		$rightwing = Card::where('user_id', '=', Auth::id())
 						->where('slot', '=', 'RW')
+						->count();
+		if($rightwing){
+						$rightwing = Card::where('user_id', '=', Auth::id())
+						->where('slot', '=', 'RW')
 						->firstOrFail();
+		} else {
+			unset($rightwing);
+		}
 		
+		//CHECK IF LEFT DEFENSE IS EQUIPPED
 		$leftd = Card::where('user_id', '=', Auth::id())
 						->where('slot', '=', 'LD')
+						->count();
+		if($leftd){
+						$leftd = Card::where('user_id', '=', Auth::id())
+						->where('slot', '=', 'LD')
 						->firstOrFail();
+		} else {
+			unset($leftd);
+		}
 		
+		//CHECK IF RIGHT DEFENSE IS EQUIPPED
 		$rightd = Card::where('user_id', '=', Auth::id())
 						->where('slot', '=', 'RD')
+						->count();
+		if($rightd){
+						$rightd = Card::where('user_id', '=', Auth::id())
+						->where('slot', '=', 'RD')
 						->firstOrFail();
+		} else {
+			unset($rightd);
+		}
 
+		//CHECK IF GOALTENDER IS EQUIPPED
 		$goalie = Card::where('user_id', '=', Auth::id())
 						->where('slot', '=', 'G')
+						->count();
+		if($goalie){
+						$goalie = Card::where('user_id', '=', Auth::id())
+						->where('slot', '=', 'G')
 						->firstOrFail();
-		
+		} else {
+			unset($goalie);
+		}
 		
 
 		return View::make('dashboard.team', compact('myCards', 
 											'leftwing', 'center', 'rightwing', 'leftd', 'rightd', 'goalie',
-											'LWs', 'Cs', 'RWs', 'LDs', 'RDs', 'Gs'));
+											'benchPlayers'));
 	}
 
 	public function postEquip($slot, $card_id) {
@@ -83,10 +103,14 @@ class DashboardController extends BaseController{
 
 		if($card->user_id == Auth::id()){
 
-			$removeCard = Card::where('user_id', '=', Auth::id())->where('slot', '=', $slot)->firstOrFail();
-				$removeCard->slot = 0;
-			$removeCard->save();
+			$removeCard = Card::where('user_id', '=', Auth::id())->where('slot', '=', $slot)->count();
+			if($removeCard){
 
+				$removeCard = Card::where('user_id', '=', Auth::id())->where('slot', '=', $slot)->firstOrFail();
+					$removeCard->slot = 0;
+				$removeCard->save();
+			}
+			
 			$card->slot = $slot;
 			$card->save();
 

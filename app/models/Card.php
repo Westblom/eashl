@@ -77,7 +77,6 @@ class Card extends \Eloquent {
 		$card->save();
 	}
 
-
 	public static function rollCompare($id){
 
 		$card = Card::find($id);
@@ -97,9 +96,10 @@ class Card extends \Eloquent {
 	public static function display($id){
 
 		$card = Card::find($id);
+		$type = $card->player->cardtype_id;
 			echo "<div class='col-md-3'>";
-		    echo "<div class='text-center cardtype-1'>";
-			echo "<b style='font-size:150%'>".$card->player->alias."</b style='font-size:150%'>";
+			echo "<div class='text-center cardtype-".$type."'>";
+			echo "<b style='font-size:150%;'>".$card->player->alias."</b>";
 			echo "<table class='table'>";
 			echo "<tr><th>Center</td> <td>".$card->C."</td></tr>";
 			echo "<tr><th>Leftwing</td> <td>".$card->L."</td></tr>";
@@ -107,9 +107,7 @@ class Card extends \Eloquent {
 			echo "<tr><th>Defender</td> <td>".$card->D."</td></tr>";
 			echo "<tr><th>Goaltender</td> <td>".$card->G."</td></tr>";
 			echo "</table>";
-						
 			echo "</div></div>";
-
 	}
 }
 

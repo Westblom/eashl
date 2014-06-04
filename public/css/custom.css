@@ -32,9 +32,19 @@ body {
 
 .formation-player {
 	padding: 10px 5px;
-	
 }
 
 .cardtype-1 {
+	padding-top:40px !important;
 	background-color: #ba720a !important;
+}
+
+.cardtype-2 {
+	padding-top:40px !important;
+	background-color: #cccccc !important;
+}
+
+.cardtype-3 {
+	padding-top:40px !important;
+	background-color: #eddf00 !important;
 }
